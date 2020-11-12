@@ -205,6 +205,7 @@
     </div>
 
     <div class="container" id="carousel">
+      <h1>Similar Products:</h1>
       <div class="row">
         <div class="col">
           <div
@@ -222,22 +223,8 @@
                 data-target="#carouselExampleIndicators"
                 data-slide-to="1"
               ></li>
-              <li
-                data-target="#carouselExampleIndicators"
-                data-slide-to="2"
-              ></li>
             </ol>
-            <div class="carousel-inner">
-              <div class="carousel-item active" id="slide1">
-                <div class="row justify-content-around"></div>
-              </div>
-              <div class="carousel-item" id="slide2">
-                <div class="row justify-content-around"></div>
-              </div>
-              <div class="carousel-item" id="slide3">
-                <div class="row justify-content-around"></div>
-              </div>
-            </div>
+            <div class="carousel-inner"></div>
             <a
               class="carousel-control-prev"
               href="#carouselExampleIndicators"
@@ -345,10 +332,17 @@
         let otherProducts = allProducts.filter((product) => product._id !== id);
         console.log(otherProducts);
         let slides = Math.ceil(otherProducts.length / 6);
-        for (let i = 0; i < slides; i++) {
-          let desiredSlide = document.querySelector(`#slide${i + 1}`);
+        let carouselBody = document.querySelector(".carousel-inner");
+
+        for (let i = 0; i < 2; i++) {
+          const newSlide = document.createElement("div");
+          newSlide.className =
+            i === 0 ? "carousel-item active" : "carousel-item";
+          newSlide.id = `slide` + (i + 1);
+          const newRow = document.createElement("div");
+          newRow.className = "row justify-content-around";
+
           for (let s = 0; s < 6; s++) {
-            console.log(desiredSlide);
             let newCard = document.createElement("div");
             newCard.classList.add("card", "col-2");
             newCard.style.maxWidth = "160px";
@@ -372,8 +366,10 @@
                                         : otherProducts[s].name
                                     }</p>
                                 </div>`;
-            desiredSlide.firstElementChild.appendChild(newCard);
+            newRow.appendChild(newCard);
           }
+          newSlide.appendChild(newRow);
+          carouselBody.appendChild(newSlide);
         }
       };
 
