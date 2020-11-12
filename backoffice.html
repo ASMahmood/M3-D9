@@ -184,6 +184,7 @@
                 class="form-control"
                 id="name"
                 placeholder="Write Name Here"
+                required
               />
             </div>
             <div class="form-group">
@@ -193,6 +194,7 @@
                 class="form-control"
                 id="description"
                 placeholder="Write Description Here"
+                required
               /></textarea>
             </div>
             <div class="form-group">
@@ -202,6 +204,7 @@
                   class="form-control"
                   id="brand"
                   placeholder="Write Brand Here"
+                  required
                 />
             </div>
             <div class="form-group">
@@ -211,6 +214,7 @@
                   class="form-control"
                   id="imageUrl"
                   placeholder="Paste Image URL Here"
+                  required
                 />
             </div>
             <div class="form-group">
@@ -220,6 +224,7 @@
                   class="form-control"
                   id="price"
                   placeholder="Write Price Here"
+                  required
                 />
             </div>
             <div class="form-group">
@@ -297,7 +302,7 @@
               if(response.ok) {
                   alert(`Product ${id ? "edited" : "created"} successfully`)
               } else {
-                  alert("uh oh stinky")
+                  alert("uh oh stinky" + error)
               }
             } catch (error) {
                 console.log(error)
