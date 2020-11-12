@@ -231,6 +231,29 @@
     </div>
 
     <script>
+        let id
+
+        window.onload = async () => {
+          let urlParams = new URLSearchParams(window.location.search);
+          id = urlParams.get("id");
+          
+          if(id) {
+            let response = await fetch(
+          "https://striveschool-api.herokuapp.com/api/product/" + id,
+            {
+              headers: {
+                Authorization:
+                  "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI1ZmFiY2ZjMDRiY2RlMTAwMTc2MTZhOTkiLCJpYXQiOjE2MDUwOTUzNjEsImV4cCI6MTYwNjMwNDk2MX0.pk0lM9kNMqL9A5UmPUWFFL7d6VIeDWrsadveoIjUNSQ",
+              },
+            }
+          );
+
+          let product = await response.json();
+
+          console.log(product)
+          }
+        }
+
         const handleSubmit = (e) => {
             e.preventDefault()
             submitProduct()
