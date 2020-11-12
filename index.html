@@ -175,7 +175,9 @@
 
     <div class="container mt-5">
       <h1>Recommended:</h1>
-      <div class="row" id="products"></div>
+      <div class="row" id="products">
+        <h1>Loading Page...</h1>
+      </div>
     </div>
 
     <script>
@@ -196,6 +198,7 @@
 
         try {
           if (products.length > 0) {
+            productsRow.innerHTML = "";
             products.forEach((product) => {
               let newCard = document.createElement("div");
               newCard.classList.add("card", "col-8", "offset-2", "mb-3");
